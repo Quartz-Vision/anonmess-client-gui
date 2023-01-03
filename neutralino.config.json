@@ -1,0 +1,35 @@
+{
+  "applicationId": "js.neutralino.zero",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "documentRoot": "/ui/build/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "nativeAllowList": [
+    "app.*",
+    "os.*"
+  ],
+  "modes": {
+    "window": {
+      "title": "anonmess-client-gui",
+      "width": 800,
+      "height": 500,
+      "minWidth": 400,
+      "minHeight": 200,
+      "icon": "/ui/public/logo192.png"
+    }
+  },
+  "cli": {
+    "binaryName": "anonmess-client-gui",
+    "resourcesPath": "/ui/build/",
+    "extensionsPath": "/extensions/",
+    "clientLibrary": "/ui/public/neutralino.js",
+    "binaryVersion": "4.9.0",
+    "clientVersion": "3.8.0",
+    "frontendLibrary": {
+      "patchFile": "/ui/public/index.html",
+      "devUrl": "http://localhost:3000"
+    }
+  }
+}

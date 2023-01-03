@@ -1,0 +1,238 @@
+@mixin section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin sectionHeader {
+  position: relative;
+  height: 55px;
+  background: rgb(40, 46, 51);
+  display: flex;
+}
+
+@mixin sectionContent {
+  flex: 1 1;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  background: rgb(40, 46, 51);
+  display: flex;
+  overflow: auto;
+}
+
+@mixin sectionFooter {
+  position: relative;
+  height: 55px;
+  background: rgb(40, 46, 51);
+  display: flex;
+}
+
+@mixin iconButton {
+  cursor: pointer;
+  color: rgb(196, 196, 196);
+  padding: 10px 0px;
+  
+  .icon {
+    font-size: 25px;
+  }
+
+  &:hover {
+    color: white;
+  }
+}
+
+.chatsSection {
+  @include section();
+
+  background: rgb(40, 46, 51);
+}
+
+.chatsHeader {
+  @include sectionHeader();
+
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+  gap: 10px;
+}
+.menuButton {
+  @include iconButton();
+}
+.chatsSearchBox {
+  flex: 1 1;
+  background: rgb(54, 62, 68);
+  border-radius: 5px;
+  height: 35px;
+  min-width: 0;
+  color: white;
+  font-size: 13px;
+  padding: 5px 15px;
+  min-width: 200px;
+}
+
+.chatsContent {
+  @include sectionContent();
+
+  flex-direction: column;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(51, 59, 65);
+  }
+}
+
+.chatImage {
+  display: flex;
+  flex: 0 0 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgb(72, 143, 172);
+  font-size: 20px;
+
+  &::before {
+    /* to make it square */
+    content:'';
+    float:left;
+    padding-top:100%;
+  }
+}
+
+.chatInfo {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.chatTitle {
+  color: white;
+}
+.chatPreview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgb(136, 136, 136);
+}
+
+.messagesSection {
+  @include section();
+  
+  background: rgb(24, 25, 29);
+  border-left: 1px solid rgb(36, 42, 46);
+}
+
+.messagesHeader {
+  @include sectionHeader();
+}
+
+.messagesContent {
+  @include sectionContent();
+
+  flex-direction: column;
+  background: rgb(24, 25, 29);
+  padding: 10px;
+}
+
+.messagesFooter {
+  @include sectionFooter();
+}
+
+.messagesInput {
+  flex: 1 1;
+  color: white;
+  font-size: 13px;
+  padding: 5px 15px;
+  min-width: 200px;
+}
+
+.messageContainer {
+  display: flex;
+  margin: 1px 0px;
+
+  &.in {
+    justify-content: var(--message-in-align);
+  }
+  &.out {
+    justify-content: var(--message-out-align);
+  }
+
+  .message {
+    background: white;
+    padding: 10px;
+    border-radius: var(--message-radius);
+  }
+
+  &.nextOther {
+    margin-bottom: 8px;
+  }
+  &:not(.nextOther) {
+    &.in .message {
+      border-bottom-left-radius: var(--message-in-group-left-radius);
+      border-bottom-right-radius: var(--message-in-group-right-radius);
+    }
+    &.out .message {
+      border-bottom-left-radius: var(--message-out-group-left-radius);
+      border-bottom-right-radius: var(--message-out-group-right-radius);
+    }
+  }
+  &:not(.prevOther) {
+    &.in .message {
+      border-top-left-radius: var(--message-in-group-left-radius);
+      border-top-right-radius: var(--message-in-group-right-radius);
+    }
+    &.out .message {
+      border-top-left-radius: var(--message-out-group-left-radius);
+      border-top-right-radius: var(--message-out-group-right-radius);
+    }
+  }
+}
+
+.messagesSection.desktop {
+  .messageContainer {
+    &.in {
+      justify-content: var(--message-in-align-desktop);
+    }
+    &.out {
+      justify-content: var(--message-out-align-desktop);
+    }
+
+    &:not(.nextOther) {
+      &.in .message {
+        border-bottom-left-radius: var(--message-in-group-left-radius-desktop);
+        border-bottom-right-radius: var(--message-in-group-right-radius-desktop);
+      }
+      &.out .message {
+        border-bottom-left-radius: var(--message-out-group-left-radius-desktop);
+        border-bottom-right-radius: var(--message-out-group-right-radius-desktop);
+      }
+    }
+    &:not(.prevOther) {
+      &.in .message {
+        border-top-left-radius: var(--message-in-group-left-radius-desktop);
+        border-top-right-radius: var(--message-in-group-right-radius-desktop);
+      }
+      &.out .message {
+        border-top-left-radius: var(--message-out-group-left-radius-desktop);
+        border-top-right-radius: var(--message-out-group-right-radius-desktop);
+      }
+    }
+  }
+}
+
+.sendButton {
+  @include iconButton();
+  
+  padding: 10px;
+}

@@ -1,0 +1,18 @@
+:root {
+  --message-in-align: flex-start;
+  --message-out-align: flex-end;
+
+  --message-in-align-desktop: flex-start;
+  --message-out-align-desktop: flex-start;
+
+  --message-radius: 50%;
+  --message-in-group-left-radius: 7px;
+  --message-in-group-right-radius: 50%;
+  --message-out-group-left-radius: 50%;
+  --message-out-group-right-radius: 7px;
+
+  --message-in-group-left-radius-desktop: 7px;
+  --message-in-group-right-radius-desktop: 15px;
+  --message-out-group-left-radius-desktop: 7px;
+  --message-out-group-right-radius-desktop: 15px;
+}
