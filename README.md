@@ -1,6 +1,15 @@
-# neutralinojs-zero
-An empty Neutralinojs app, extend as you wish
+Install `neu cli` and `make`.
 
+```bash
+make
 ```
-neu create myapp --template neutralinojs/neutralinojs-zero
+
+```bash
+cd ui
+npm i
+npm start
+```
+
+```bash
+neu run --frontend-lib-dev -- --window-enable-inspector
 ```
