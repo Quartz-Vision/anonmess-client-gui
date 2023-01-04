@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { initWS } from 'services/ws';
 
 import 'styles/index.scss';
 import App from './App';
@@ -15,3 +16,4 @@ root.render(
 );
 
 Neutralino.init();
+initWS();

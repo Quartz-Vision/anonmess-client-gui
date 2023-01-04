@@ -3,6 +3,7 @@ import { RiMailSendLine, RiMenuLine } from "react-icons/ri";
 
 import SplitBox from 'components/SplitBox';
 import styles from './styles.module.scss';
+import { sendMessage, EVENT_NEW_MESSAGE, wsEvents, type ChatMessage } from 'services/ws';
 
 const Sidebar = () => {
 
@@ -17,8 +18,6 @@ class Message {
     this.text = text;
   }
 };
-
-const ws = new WebSocket("ws://127.0.0.1:8061");
 
 const Home = () => {
   const initialChatsScale = useMemo(() => Number(localStorage.getItem('ui.channelScale')), []);
@@ -35,22 +34,24 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const handler = (msg: MessageEvent<string>) => addMessage(new Message("in", String(msg.data)));
-    ws.addEventListener("message", handler);
+    const handler = (msg: ChatMessage) => addMessage(new Message("in", String(msg.text)));
+    wsEvents.on(EVENT_NEW_MESSAGE, handler);
 
-    return () => ws.removeEventListener("message", handler);
+    return () => {
+      wsEvents.off(EVENT_NEW_MESSAGE, handler)
+    };
   }, []);
 
-  const sendMessage = () => {
+  const sendClientMessage = () => {
     console.log(1);
     addMessage(new Message("out", messageText));
-    ws.send(messageText);
+    sendMessage(messageText);
     setMessageText("");
   };
   
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
-    sendMessage();
+    sendClientMessage();
     return false;
   }
 
